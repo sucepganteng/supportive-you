@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You've Got This! 💙</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3a5f, #0d1b2a, #1e3a5f);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Floating motivational symbols */
+        .float {
+            position: absolute;
+            font-size: 25px;
+            animation: fall 8s linear infinite;
+            opacity: 0;
+            bottom: -50px;
+        }
+
+        @keyframes fall {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            10% { opacity: 0.8; }
+            100% { opacity: 0; transform: translateY(-110vh) scale(1); }
+        }
+
+        /* Main Container */
+        .container {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            width: 430px;
+            max-width: 90%;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        #page1, #page2, #page3, #page4, #page5, #page6 {
+            display: none;
+        }
+
+        #page1.active, #page2.active, #page3.active, #page4.active, #page5.active, #page6.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PAGE 1: Start */
+        .big-emoji {
+            font-size: 100px;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .tap-text {
+            margin-top: 20px;
+            color: #bfdbfe;
+            font-size: 18px;
+        }
+
+        /* All Pages */
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .page-text {
+            color: #dbeafe;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: 2px solid white;
+            border-radius: 50px;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        .btn-blue {
+            background: #1e40af;
+            border-color: #60a5fa;
+        }
+
+        .btn-blue:hover {
+            background: #60a5fa;
+            color: #1e3a8f;
+        }
+
+        /* Quotes */
+        .quote-box {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-size: 20px;
+            font-style: italic;
+            color: white;
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            font-size: 14px;
+            color: #93c5fd;
+            margin-top: 10px;
+        }
+
+        /* Checkbox motivate */
+        .check-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .check-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .check-item.checked {
+            background: #10b981;
+        }
+
+        .check-item .icon {
+            font-size: 24px;
+        }
+
+        .check-item .text {
+            font-size: 15px;
+        }
+
+        /* Fun interactive */
+        .fun-btn {
+            font-size: 60px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .fun-btn:hover {
+            transform: scale(1.3);
+        }
+
+        /* Progress */
+        .progress-box {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #93c5fd;
+        }
+
+        /* Dream section */
+        .dream-text {
+            font-size: 22px;
+            color: #bfdbfe;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        .stars {
+            font-size: 40px;
+            margin: 15px 0;
+        }
+
+        /* Final */
+        .final-heart {
+            font-size: 80px;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="floats"></div>
+
+    <div class="container">
+        
+        <!-- PAGE 1: Start -->
+        <div id="page1" class="active">
+            <div class="big-emoji" onclick="goToPage(2)">💪</div>
+            <h1>You Can Do It! 💙</h1>
+            <p class="tap-text">Tap when you're ready! 📚</p>
+        </div>
+
+        <!-- PAGE 2: Menu -->
+        <div id="page2">
+            <h1>Choose Your Power ⚡</h1>
+            <p class="page-text">What do you need right now?</p>
+            <div class="btn-group">
+                <button class="btn" onclick="goToPage(3)">💙 Stay Positive</button>
+                <button class="btn" onclick="goToPage(4)">😊 Stay Smiling</button>
+                <button class="btn" onclick="goToPage(5)">🔥 Stay Strong</button>
+                <button class="btn" onclick="goToPage(6)">⭐ Achieve Dreams</button>
+            </div>
+        </div>
+
+        <!-- PAGE 3: Stay Positive -->
+        <div id="page3">
+            <h1>💙 Stay Positive</h1>
+            <p class="page-text">
+                Remember: Every exam is just a step<br>
+                closer to your dreams! 🌟
+            </p>
+            
+            <div class="quote-box">
+                <p class="quote">"Believe you can and you're halfway there."</p>
+                <p class="quote-author">- Theodore Roosevelt</p>
+            </div>
+
+            <div class="quote-box">
+                <p class="quote">"You've survived 100% of your worst days. You'll survive this too!" 💪</p>
+            </div>
+
+            <button class="btn" onclick="goToPage(2)">⬅️ Back</button>
+        </div>
+
+        <!-- PAGE 4: Stay Smiling -->
+        <div id="page4">
+            <h1>😊 Stay Smiling</h1>
+            <p class="page-text">Let's smile! Click the button! 😄</p>
+            
+            <div style="font-size: 60px; margin: 20px 0;">
+                <span class="fun-btn" onclick="changeEmoji(this)">😊</span>
+            </div>
+
+            <p id="smileText" class="page-text">Keep smiling! 😊</p>
+
+            <button class="btn" onclick="goToPage(2)">⬅️ Back</button>
+        </div>
+
+        <!-- PAGE 5: Stay Strong -->
+        <div id="page5">
+            <h1>🔥 Stay Strong</h1>
+            <p class="page-text">
+                You're tougher than you think!<br>
+                Check off what you've done: ✅
+            </p>
+
+            <div class="check-group">
+                <div class="check-item" onclick="checkItem(this)">
+                    <span class="icon">📚</span>
+                    <span class="text">I've studied today</span>
+                </div>
+                <div class="check-item" onclick="checkItem(this)">
+                    <span class="icon">😴</span>
+                    <span class="text">I've rested enough</span>
+                </div>
+                <div class="check-item" onclick="checkItem(this)">
+                    <span class="icon">💪</span>
+                    <span class="text">I've done my best</span>
+                </div>
+                <div class="check-item" onclick="checkItem(this)">
+                    <span class="icon">🌟</span>
+                    <span class="text">I believe in myself!</span>
+                </div>
+            </div>
+
+            <div class="progress-box">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">0% - You've got this!</p>
+            </div>
+
+            <button class="btn" onclick="goToPage(2)">⬅️ Back</button>
+        </div>
+
+        <!-- PAGE 6: Dreams -->
+        <div id="page6">
+            <div class="stars">⭐🌟✨</div>
+            <h1>Achievement Your Dreams</h1>
+            <p class="page-text">
+                Your hard work will pay off!<br>
+                Keep going! 💙
+            </p>
+
+            <p class="dream-text">
+                📝 This exam is just ONE step<br>
+                🏆 towards your GOAL<br><br>
+                💫 Your future is BRIGHT!<br>
+                🌈 Dreams are waiting for you!
+            </p>
+
+            <button class="btn btn-blue" onclick="showSupport()">💙 I Can Do It! 💙</button>
+            <br><br>
+            <button class="btn" onclick="goToPage(2)">⬅️ Back</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Floating symbols
+        const symbols = ['💙', '⭐', '✨', '🌟', '💪', '📚', '🏆'];
+        
+        function createFloats() {
+            const container = document.getElementById('floats');
+            
+            setInterval(() => {
+                const float = document.createElement('div');
+                float.className = 'float';
+                float.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                float.style.left = Math.random() * 100 + 'vw';
+                float.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                float.style.color = ['#60a5fa', '#93c5fd', '#bfdbfe'][Math.floor(Math.random() * 3)];
+                float.style.fontSize = (Math.random() * 15 + 20) + 'px';
+                container.appendChild(float);
+                
+                setTimeout(() => float.remove(), 8000);
+            }, 400);
+        }
+
+        // Navigate
+        function goToPage(num) {
+            document.querySelectorAll('.container > div').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+        }
+
+        // Change emoji for smiling page
+        const emojis = ['😊', '😄', '🥰', '😎', '🤩', '😁', '💪', '🌟'];
+        function changeEmoji(btn) {
+            btn.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            document.getElementById('smileText').innerText = 
+                ["Keep smiling! 😊", "You're amazing! 🌟", "I like your smile! 💙", "Stay happy! ✨"][Math.floor(Math.random() * 4)];
+        }
+
+        // Check items
+        let checked = 0;
+        const total = 4;
+        function checkItem(item) {
+            if(!item.classList.contains('checked')) {
+                item.classList.add('checked');
+                item.querySelector('.text').innerText += ' ✅';
+                checked++;
+                
+                // Update progress
+                const percent = (checked / total) * 100;
+                document.getElementById('progressFill').style.width = percent + '%';
+                document.getElementById('progressText').innerText = 
+                    percent === 100 ? '100% - YOU DID IT! 🎉' : percent + '% - Keep going! 💪';
+                
+                if(checked === total) {
+                    setTimeout(() => {
+                        alert('🎉 AMAZING! You completed everything! You\'re unstoppable! 💙');
+                    }, 500);
+                }
+            }
+        }
+
+        // Show support message
+        function showSupport() {
+            alert('💙 YOU ARE AMAZING! 💙\n\nYou can do this!\nI believe in you!\nGood luck! 🎓✨');
+            goToPage(1);
+            confetti();
+        }
+
+        // Confetti
+        function confetti() {
+            for(let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.innerHTML = ['💙', '⭐', '✨', '🌟', '💪'][Math.floor(Math.random() * 5)];
+                    div.style.position = 'fixed';
+                    div.style.left = Math.random() * 100 + 'vw';
+                    div.style.top = '-30px';
+                    div.style.fontSize = '30px';
+                    div.style.animation = 'fall 3s linear';
+                    div.style.zIndex = '100';
+                    document.body.appendChild(div);
+                    
+                    setTimeout(() => div.remove(), 3000);
+                }, i * 60);
+            }
+        }
+
+        createFloats();
+    </script>
+</body>
+</html>
